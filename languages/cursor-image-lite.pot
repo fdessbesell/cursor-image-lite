@@ -1,0 +1,50 @@
+\
+# POT file for Cursor Image Lite
+msgid ""
+msgstr ""
+"Project-Id-Version: Cursor Image Lite 1.0\n"
+"POT-Creation-Date: 2025-11-06 00:00+0000\n"
+"Language: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Configurações"
+msgstr ""
+
+msgid "Cursor Image Lite"
+msgstr ""
+
+msgid "Selecionar imagem"
+msgstr ""
+
+msgid "Remover"
+msgstr ""
+
+msgid "Somente PNG. Recomenda-se imagens leves (máx 200KB)."
+msgstr ""
+
+msgid "Tamanho (px):"
+msgstr ""
+
+msgid "Se definido, será usado quando passar o cursor sobre links e botões."
+msgstr ""
+
+msgid "Tamanho do hover (px):"
+msgstr ""
+
+msgid "Se este plugin ajudou, considere apoiar:"
+msgstr ""
+
+msgid "O cursor padrão deve ser PNG."
+msgstr ""
+
+msgid "O cursor padrão é muito grande (máx 200KB)."
+msgstr ""
+
+msgid "O cursor de hover deve ser PNG."
+msgstr ""
+
+msgid "O cursor de hover é muito grande (máx 200KB)."
+msgstr ""
+
+msgid "Se você está gostando do Cursor Image Lite e quer apoiar o desenvolvimento, considere uma contribuição: %s"
+msgstr ""

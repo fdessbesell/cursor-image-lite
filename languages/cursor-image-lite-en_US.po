@@ -1,0 +1,62 @@
+# POT file for Cursor Image Lite
+msgid ""
+msgstr ""
+"Project-Id-Version: Cursor Image Lite 1.0\n"
+"POT-Creation-Date: 2025-11-06 00:00+0000\n"
+"Language: en-US\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-11-06 20:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: English (United States)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.8.3; php-8.2.29"
+
+msgid "Configurações"
+msgstr "Settings"
+
+msgid "Cursor Image Lite"
+msgstr "Cursor Image Lite"
+
+msgid "O cursor de hover deve ser PNG."
+msgstr "The hover cursor should be PNG."
+
+msgid "O cursor de hover é muito grande (máx 200KB)."
+msgstr "The hover cursor is too large (max. 200KB)."
+
+msgid "O cursor padrão deve ser PNG."
+msgstr "The default cursor should be PNG."
+
+msgid "O cursor padrão é muito grande (máx 200KB)."
+msgstr "The default cursor is too large (max. 200 KB)."
+
+msgid "Remover"
+msgstr "Remove"
+
+msgid "Se definido, será usado quando passar o cursor sobre links e botões."
+msgstr "If defined, it will be used when hovering over links and buttons."
+
+msgid "Se este plugin ajudou, considere apoiar:"
+msgstr "If this plugin has been helpful, please consider supporting it:"
+
+msgid ""
+"Se você está gostando do Cursor Image Lite e quer apoiar o desenvolvimento, "
+"considere uma contribuição: %s"
+msgstr ""
+"If you like Cursor Image Lite and want to support its development, please "
+"consider making a contribution: %s"
+
+msgid "Selecionar imagem"
+msgstr "Select image"
+
+msgid "Somente PNG. Recomenda-se imagens leves (máx 200KB)."
+msgstr "PNG only. Lightweight images are recommended (max. 200KB)."
+
+msgid "Tamanho (px):"
+msgstr "Size (px):"
+
+msgid "Tamanho do hover (px):"
+msgstr "Hover size (px):"
