@@ -20,14 +20,24 @@ function cil_register_settings(){
 }
 
 function cil_admin_assets($hook){
-    if (strpos($hook, 'settings_page_cil-settings') === false) return;
-    wp_enqueue_style('cil-admin-css', CIL_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0');
+    if ($hook !== 'settings_page_cil-settings') return;
+    wp_enqueue_style('cil-admin-css', CIL_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0.1');
     wp_enqueue_media();
-    wp_enqueue_script('cil-admin-js', CIL_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('cil-admin-js', CIL_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.1', true);
+    wp_localize_script('cil-admin-js', 'CIL_Admin', array(
+        'dismiss_nonce' => wp_create_nonce('cil_dismiss_notice'),
+    ));
 }
 
 function cil_options_validate($input){
-    $out = get_option('cil_options', array());
+    $prev = get_option('cil_options', array(
+        'cursor_id'=>0,
+        'cursor_size'=>48,
+        'hover_id'=>0,
+        'hover_size'=>48
+    ));
+
+    $out = $prev;
     $out['cursor_id'] = isset($input['cursor_id']) ? intval($input['cursor_id']) : 0;
     $out['cursor_size'] = isset($input['cursor_size']) ? intval($input['cursor_size']) : 48;
     $out['hover_id'] = isset($input['hover_id']) ? intval($input['hover_id']) : 0;
@@ -36,34 +46,73 @@ function cil_options_validate($input){
     $out['cursor_size'] = max(8, min(256, $out['cursor_size']));
     $out['hover_size'] = max(8, min(256, $out['hover_size']));
 
-    if($out['cursor_id']){
+    $has_error_code = function($code){
+        $errors = get_settings_errors('cil_options');
+        if (empty($errors)) return false;
+        foreach ($errors as $e) {
+            if (isset($e['code']) && $e['code'] === $code) return true;
+        }
+        return false;
+    };
+
+    if (empty($out['cursor_id']) && empty($out['hover_id'])) {
+        return $out;
+    }
+
+    if (empty($out['cursor_id']) && ! empty($out['hover_id'])) {
+        if (! $has_error_code('cil_cursor_required_hover')) {
+            add_settings_error('cil_options', 'cil_cursor_required_hover', __('É obrigatório selecionar um cursor padrão quando um hover for selecionado.', 'cursor-image-lite'));
+        }
+        return $prev;
+    }
+
+    if ($out['cursor_id']) {
         $file = get_attached_file($out['cursor_id']);
-        if($file){
-            $mime = wp_check_filetype($file)['type'];
-            $size = filesize($file);
-            if(strpos($mime, 'png') === false){
-                add_settings_error('cil_options', 'cil_cursor_type', __('O cursor padrão deve ser PNG.', 'cursor-image-lite'));
-                $out['cursor_id'] = 0;
-            } elseif($size > 200 * 1024){
-                add_settings_error('cil_options', 'cil_cursor_size', __('O cursor padrão é muito grande (máx 200KB).', 'cursor-image-lite'), 'error');
-                $out['cursor_id'] = 0;
+        if ($file) {
+            $filetype = wp_check_filetype($file);
+            $ext = isset($filetype['ext']) ? strtolower($filetype['ext']) : '';
+            $size = @filesize($file);
+            if ($ext !== 'png') {
+                if (! $has_error_code('cil_cursor_type')) {
+                    add_settings_error('cil_options', 'cil_cursor_type', __('O cursor padrão deve ser PNG.', 'cursor-image-lite'));
+                }
+                return $prev;
+            } elseif ($size !== false && $size > 200 * 1024) {
+                if (! $has_error_code('cil_cursor_size')) {
+                    add_settings_error('cil_options', 'cil_cursor_size', __('O cursor padrão é muito grande (máx 200KB).', 'cursor-image-lite'), 'error');
+                }
+                return $prev;
             }
+        } else {
+            if (! $has_error_code('cil_cursor_missing')) {
+                add_settings_error('cil_options', 'cil_cursor_missing', __('Arquivo do cursor padrão não encontrado.', 'cursor-image-lite'));
+            }
+            return $prev;
         }
     }
-    if($out['hover_id']){
+
+    if ($out['hover_id']) {
         $file = get_attached_file($out['hover_id']);
-        if($file){
-            $mime = wp_check_filetype($file)['type'];
-            $size = filesize($file);
-            if(strpos($mime, 'png') === false){
-                add_settings_error('cil_options', 'cil_hover_type', __('O cursor de hover deve ser PNG.', 'cursor-image-lite'));
+        if ($file) {
+            $filetype = wp_check_filetype($file);
+            $ext = isset($filetype['ext']) ? strtolower($filetype['ext']) : '';
+            $size = @filesize($file);
+            if ($ext !== 'png') {
+                if (! $has_error_code('cil_hover_type')) {
+                    add_settings_error('cil_options', 'cil_hover_type', __('O cursor de hover deve ser PNG.', 'cursor-image-lite'));
+                }
                 $out['hover_id'] = 0;
-            } elseif($size > 200 * 1024){
-                add_settings_error('cil_options', 'cil_hover_size', __('O cursor de hover é muito grande (máx 200KB).', 'cursor-image-lite'), 'error');
+            } elseif ($size !== false && $size > 200 * 1024) {
+                if (! $has_error_code('cil_hover_size')) {
+                    add_settings_error('cil_options', 'cil_hover_size', __('O cursor de hover é muito grande (máx 200KB).', 'cursor-image-lite'), 'error');
+                }
                 $out['hover_id'] = 0;
             }
+        } else {
+            $out['hover_id'] = 0;
         }
     }
+
     return $out;
 }
 
@@ -83,6 +132,7 @@ function cil_settings_page(){
         <form method="post" action="options.php">
             <?php settings_fields('cil_options_group'); ?>
             <?php do_settings_sections('cil-settings'); ?>
+            <?php settings_errors('cil_options'); ?>
             <table class="form-table cil-table">
                 <tr>
                     <th><?php esc_html_e('Cursor padrão (PNG) — obrigatório', 'cursor-image-lite'); ?></th>
@@ -91,9 +141,9 @@ function cil_settings_page(){
                             <img id="cil_cursor_preview" src="<?php echo esc_url($cursor_url); ?>" class="cil-preview" style="<?php echo $cursor_url ? '' : 'display:none;'; ?>" />
                         </div>
                         <input type="hidden" id="cil_cursor_id" name="cil_options[cursor_id]" value="<?php echo esc_attr($opts['cursor_id']); ?>" />
-                        <button class="button" id="cil_upload_cursor"><?php esc_html_e('Selecionar imagem', 'cursor-image-lite'); ?></button>
-                        <button class="button" id="cil_remove_cursor"><?php esc_html_e('Remover', 'cursor-image-lite'); ?></button>
-                        <p class="description"><?php esc_html_e('Somente PNG. Recomenda-se imagens leves (máx 200KB).', 'cursor-image-lite'); ?></p>
+                        <button type="button" class="button" id="cil_upload_cursor"><?php esc_html_e('Selecionar imagem', 'cursor-image-lite'); ?></button>
+                        <button type="button" class="button" id="cil_remove_cursor"><?php esc_html_e('Remover', 'cursor-image-lite'); ?></button>
+                        <p class="description"><?php esc_html_e('Recomenda-se imagens leves (máx 200KB).', 'cursor-image-lite'); ?></p>
                         <p>
                             <label><?php esc_html_e('Tamanho (px):', 'cursor-image-lite'); ?></label>
                             <input type="number" name="cil_options[cursor_size]" value="<?php echo esc_attr($opts['cursor_size']); ?>" min="8" max="256" />
@@ -107,8 +157,8 @@ function cil_settings_page(){
                             <img id="cil_hover_preview" src="<?php echo esc_url($hover_url); ?>" class="cil-preview" style="<?php echo $hover_url ? '' : 'display:none;'; ?>" />
                         </div>
                         <input type="hidden" id="cil_hover_id" name="cil_options[hover_id]" value="<?php echo esc_attr($opts['hover_id']); ?>" />
-                        <button class="button" id="cil_upload_hover"><?php esc_html_e('Selecionar imagem', 'cursor-image-lite'); ?></button>
-                        <button class="button" id="cil_remove_hover"><?php esc_html_e('Remover', 'cursor-image-lite'); ?></button>
+                        <button type="button" class="button" id="cil_upload_hover"><?php esc_html_e('Selecionar imagem', 'cursor-image-lite'); ?></button>
+                        <button type="button" class="button" id="cil_remove_hover"><?php esc_html_e('Remover', 'cursor-image-lite'); ?></button>
                         <p class="description"><?php esc_html_e('Se definido, será usado quando passar o cursor sobre links e botões.', 'cursor-image-lite'); ?></p>
                         <p>
                             <label><?php esc_html_e('Tamanho do hover (px):', 'cursor-image-lite'); ?></label>
@@ -143,6 +193,10 @@ function cil_maybe_show_support_notice(){
     }
 }
 add_action('wp_ajax_cil_dismiss_support_notice', function(){
+    if (! current_user_can('manage_options')) {
+        wp_send_json_error('forbidden', 403);
+    }
+    check_ajax_referer('cil_dismiss_notice', 'nonce');
     update_option('cil_support_notice_dismissed', 1);
     wp_send_json_success();
 });

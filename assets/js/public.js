@@ -5,18 +5,11 @@
     var cursorSize = CIL_Settings.cursor_size || 48;
     var hoverSize = CIL_Settings.hover_size || 48;
 
-    try {
-        if(window.matchMedia && (window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(hover: none)').matches)){
+    if (!cursorUrl && !hoverUrl) return;
 
-            try{ document.documentElement.classList.remove('cil-enabled'); }catch(e){}
-            return;
-        }
-    } catch(e){}
-
-    if(!cursorUrl) return;
+    if (!cursorUrl) return;
 
     try{ document.documentElement.classList.add('cil-enabled'); }catch(e){}
-
     var img = document.createElement('img');
     img.className = 'cil-cursor';
     img.src = cursorUrl;
@@ -31,39 +24,50 @@
         img.style.display = 'block';
         var x = e.clientX;
         var y = e.clientY;
-
         img.style.transform = 'translate(' + x + 'px, ' + y + 'px) translate(-50%,-50%)';
     }
 
     function setToHover(){
-        if(hoverUrl){
-            img.src = hoverUrl;
-            img.style.width = hoverSize + 'px';
-            currentIsHover = true;
-        } else {
-            img.src = cursorUrl;
-            img.style.width = cursorSize + 'px';
-            currentIsHover = false;
-        }
+        if(!hoverUrl) return;
+        if(currentIsHover) return;
+        currentIsHover = true;
+        img.src = hoverUrl;
+        img.style.width = hoverSize + 'px';
     }
     function setToNormal(){
+        if(!cursorUrl) return;
+        if(!currentIsHover) return;
+        currentIsHover = false;
         img.src = cursorUrl;
         img.style.width = cursorSize + 'px';
-        currentIsHover = false;
     }
 
     document.addEventListener('mousemove', onMove, {passive:true});
 
     document.addEventListener('mouseover', function(e){
         var t = e.target;
-        if(t.closest && t.closest('a, button, [role="button"], [onclick]')){
-            setToHover();
-        } else {
-            setToNormal();
+        while(t && t !== document){
+            if(t.tagName && (t.tagName.toLowerCase() === 'a' || t.tagName.toLowerCase() === 'button' || t.getAttribute && t.getAttribute('role') === 'button')){
+                setToHover();
+                return;
+            }
+            t = t.parentNode;
         }
     }, true);
-    document.addEventListener('mouseout', function(e){
 
+    document.addEventListener('mouseout', function(e){
+        var related = e.relatedTarget;
+        if(!related){
+            setToNormal();
+            return;
+        }
+        var t = related;
+        while(t && t !== document){
+            if(t.tagName && (t.tagName.toLowerCase() === 'a' || t.tagName.toLowerCase() === 'button' || t.getAttribute && t.getAttribute('role') === 'button')){
+                return;
+            }
+            t = t.parentNode;
+        }
         setToNormal();
     }, true);
 

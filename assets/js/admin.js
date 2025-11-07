@@ -24,6 +24,10 @@ jQuery(document).ready(function($){
     $('#cil_remove_hover').on('click', function(e){ e.preventDefault(); $('#cil_hover_preview').hide().attr('src',''); $('#cil_hover_id').val(''); });
 
     $(document).on('click', '.notice.is-dismissible', function(){
-        $.post(ajaxurl, { action: 'cil_dismiss_support_notice' });
+        var data = {
+            action: 'cil_dismiss_support_notice',
+            nonce: (typeof CIL_Admin !== 'undefined' && CIL_Admin.dismiss_nonce) ? CIL_Admin.dismiss_nonce : ''
+        };
+        $.post(ajaxurl, data);
     });
 });

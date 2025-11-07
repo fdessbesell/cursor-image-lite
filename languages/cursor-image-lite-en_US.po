@@ -1,62 +1,103 @@
 # POT file for Cursor Image Lite
 msgid ""
 msgstr ""
-"Project-Id-Version: Cursor Image Lite 1.0\n"
-"POT-Creation-Date: 2025-11-06 00:00+0000\n"
-"Language: en-US\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-11-06 20:07+0000\n"
+"Project-Id-Version: Cursor Image Lite 1.0.1\n"
+"POT-Creation-Date: 2025-11-07 00:40+0000\n"
+"PO-Revision-Date: 2025-11-07 00:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: English (United States)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8.3; php-8.2.29"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: includes/admin.php:88
+msgid "Arquivo do cursor padrão não encontrado."
+msgstr "Default cursor file not found."
+
+#: cursor-image-lite.php:30
 msgid "Configurações"
 msgstr "Settings"
 
+#: includes/admin.php:154
+msgid "Cursor hover (PNG) — opcional"
+msgstr "Hover cursor (PNG) — optional"
+
+#. Name of the plugin
+#: includes/admin.php:10 includes/admin.php:11 includes/admin.php:131
 msgid "Cursor Image Lite"
 msgstr "Cursor Image Lite"
 
+#: includes/admin.php:138
+msgid "Cursor padrão (PNG) — obrigatório"
+msgstr "Default cursor (PNG) — required"
+
+#. Author of the plugin
+msgid "Felipe Dessbesell"
+msgstr "Felipe Dessbesell"
+
+#. Author URI of the plugin
+msgid "https://wp.harukicore.com/"
+msgstr "https://wp.harukicore.com/"
+
+#. URI of the plugin
+msgid "https://wp.harukicore.com/cursor-image-lite"
+msgstr "https://wp.harukicore.com/cursor-image-lite"
+
+#: includes/admin.php:102
 msgid "O cursor de hover deve ser PNG."
 msgstr "The hover cursor should be PNG."
 
+#: includes/admin.php:107
 msgid "O cursor de hover é muito grande (máx 200KB)."
 msgstr "The hover cursor is too large (max. 200KB)."
 
+#: includes/admin.php:77
 msgid "O cursor padrão deve ser PNG."
 msgstr "The default cursor should be PNG."
 
+#: includes/admin.php:82
 msgid "O cursor padrão é muito grande (máx 200KB)."
-msgstr "The default cursor is too large (max. 200 KB)."
+msgstr "The default cursor is too large (max. 200KB)."
 
+#. Description of the plugin
+msgid "Personalize o cursor do site com imagens PNG (cursor padrão + hover). Leve, gratuito e minimalista."
+msgstr "Customize the website cursor with PNG images (default cursor + hover). Lightweight, free, and minimalist."
+
+#: includes/admin.php:146
+msgid "Recomenda-se imagens leves (máx 200KB)."
+msgstr "Keep files small (max. 200KB)."
+
+#: includes/admin.php:145 includes/admin.php:161
 msgid "Remover"
 msgstr "Remove"
 
+#: includes/admin.php:162
 msgid "Se definido, será usado quando passar o cursor sobre links e botões."
 msgstr "If defined, it will be used when hovering over links and buttons."
 
+#: includes/admin.php:174
 msgid "Se este plugin ajudou, considere apoiar:"
 msgstr "If this plugin has been helpful, please consider supporting it:"
 
-msgid ""
-"Se você está gostando do Cursor Image Lite e quer apoiar o desenvolvimento, "
-"considere uma contribuição: %s"
-msgstr ""
-"If you like Cursor Image Lite and want to support its development, please "
-"consider making a contribution: %s"
+#. %s contains support link
+#: includes/admin.php:191
+#, php-format
+msgid "Se você está gostando do Cursor Image Lite e quer apoiar o desenvolvimento, considere uma contribuição: %s"
+msgstr "If you enjoy Cursor Image Lite and want to support development, please consider a contribution: %s"
 
+#: includes/admin.php:144 includes/admin.php:160
 msgid "Selecionar imagem"
 msgstr "Select image"
 
-msgid "Somente PNG. Recomenda-se imagens leves (máx 200KB)."
-msgstr "PNG only. Lightweight images are recommended (max. 200KB)."
-
+#: includes/admin.php:148
 msgid "Tamanho (px):"
-msgstr "Size (px):"
+msgstr "Size (px)"
 
+#: includes/admin.php:164
 msgid "Tamanho do hover (px):"
-msgstr "Hover size (px):"
+msgstr "Hover size (px)"
+
+#: includes/admin.php:64
+msgid "É obrigatório selecionar um cursor padrão quando um hover for selecionado."
+msgstr "A default cursor is required when a hover cursor is selected."
