@@ -1,9 +1,8 @@
-\
 # POT file for Cursor Image Lite
 msgid ""
 msgstr ""
 "Project-Id-Version: Cursor Image Lite 1.0.1\n"
-"POT-Creation-Date: 2025-11-07 00:40+0000\n"
+"POT-Creation-Date: 2025-11-25 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: \n"
@@ -11,93 +10,81 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: includes/admin.php:88
-msgid "Arquivo do cursor padrão não encontrado."
+#. Default cursor file missing
+msgid "Default cursor file not found."
 msgstr ""
 
-#: cursor-image-lite.php:30
-msgid "Configurações"
+#. Settings link label
+msgid "Settings"
 msgstr ""
 
-#: includes/admin.php:154
-msgid "Cursor hover (PNG) — opcional"
+#. Hover cursor label
+msgid "Hover cursor (PNG) — optional"
 msgstr ""
 
-#. Name of the plugin
-#: includes/admin.php:10 includes/admin.php:11 includes/admin.php:131
+#. Plugin name
 msgid "Cursor Image Lite"
 msgstr ""
 
-#: includes/admin.php:138
-msgid "Cursor padrão (PNG) — obrigatório"
+#. Default cursor section label
+msgid "Default cursor (PNG) — required"
 msgstr ""
 
-#. Author of the plugin
-msgid "Felipe Dessbesell"
+#. Plugin description
+msgid "Customize the website cursor with PNG images (default cursor + hover). Lightweight, free, and minimalist."
 msgstr ""
 
-#. Author URI of the plugin
-msgid "https://wp.harukicore.com/"
+#. Hover must be PNG
+msgid "The hover cursor must be a PNG."
 msgstr ""
 
-#. URI of the plugin
-msgid "https://wp.harukicore.com/cursor-image-lite"
+#. Hover too large
+msgid "The hover cursor is too large (max 200KB)."
 msgstr ""
 
-#: includes/admin.php:102
-msgid "O cursor de hover deve ser PNG."
+#. Default must be PNG
+msgid "The default cursor must be a PNG."
 msgstr ""
 
-#: includes/admin.php:107
-msgid "O cursor de hover é muito grande (máx 200KB)."
+#. Default too large
+msgid "The default cursor is too large (max 200KB)."
 msgstr ""
 
-#: includes/admin.php:77
-msgid "O cursor padrão deve ser PNG."
+#. Recommend small files
+msgid "We recommend lightweight images (max 200KB)."
 msgstr ""
 
-#: includes/admin.php:82
-msgid "O cursor padrão é muito grande (máx 200KB)."
+#. Remove button
+msgid "Remove"
 msgstr ""
 
-#. Description of the plugin
-msgid "Personalize o cursor do site com imagens PNG (cursor padrão + hover). Leve, gratuito e minimalista."
+#. Info about hover usage
+msgid "If defined, it will be used when hovering over links and buttons."
 msgstr ""
 
-#: includes/admin.php:146
-msgid "Recomenda-se imagens leves (máx 200KB)."
+#. Support prompt
+msgid "If this plugin has been helpful, please consider supporting it:"
 msgstr ""
 
-#: includes/admin.php:145 includes/admin.php:161
-msgid "Remover"
+#. Support notice (with link)
+msgid "If you enjoy Cursor Image Lite and want to support development, please consider a contribution: %s"
 msgstr ""
 
-#: includes/admin.php:162
-msgid "Se definido, será usado quando passar o cursor sobre links e botões."
+#. Select image button
+msgid "Select image"
 msgstr ""
 
-#: includes/admin.php:174
-msgid "Se este plugin ajudou, considere apoiar:"
+#. Size label
+msgid "Size (px):"
 msgstr ""
 
-#. %s contiene um link de apoio
-#: includes/admin.php:191
-#, php-format
-msgid "Se você está gostando do Cursor Image Lite e quer apoiar o desenvolvimento, considere uma contribuição: %s"
+#. Hover size label
+msgid "Hover size (px):"
 msgstr ""
 
-#: includes/admin.php:144 includes/admin.php:160
-msgid "Selecionar imagem"
+#. Validation: default required when hover selected
+msgid "A default cursor is required when a hover cursor is selected."
 msgstr ""
 
-#: includes/admin.php:148
-msgid "Tamanho (px):"
-msgstr ""
-
-#: includes/admin.php:164
-msgid "Tamanho do hover (px):"
-msgstr ""
-
-#: includes/admin.php:64
-msgid "É obrigatório selecionar um cursor padrão quando um hover for selecionado."
-msgstr ""
+\
+# POT file for Cursor Image Lite

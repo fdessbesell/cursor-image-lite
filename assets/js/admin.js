@@ -5,8 +5,8 @@ jQuery(document).ready(function($){
             e.preventDefault();
             if(frame) frame.open();
             frame = wp.media({
-                title: 'Selecionar ou enviar imagem',
-                button: { text: 'Usar imagem' },
+                title: 'Select or upload image',
+                button: { text: 'Use image' },
                 multiple: false
             });
             frame.on('select', function(){
@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
 
     $(document).on('click', '.notice.is-dismissible', function(){
         var data = {
-            action: 'cil_dismiss_support_notice',
+            action: 'cursimli_dismiss_support_notice',
             nonce: (typeof CIL_Admin !== 'undefined' && CIL_Admin.dismiss_nonce) ? CIL_Admin.dismiss_nonce : ''
         };
         $.post(ajaxurl, data);

@@ -1,0 +1,101 @@
+# POT file for Cursor Image Lite
+msgid ""
+msgstr ""
+"Project-Id-Version: Cursor Image Lite 1.0.1\n"
+"POT-Creation-Date: 2025-11-25 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Português do Brasil\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-11-25 15:11+0000\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.8.3; php-8.2.29"
+
+#. Validation: default required when hover selected
+msgid "A default cursor is required when a hover cursor is selected."
+msgstr ""
+"É necessário um cursor padrão quando um cursor secundário é selecionado."
+
+#. Plugin name
+msgid "Cursor Image Lite"
+msgstr "Cursor Image Lite"
+
+#. Plugin description
+msgid ""
+"Customize the website cursor with PNG images (default cursor + hover). "
+"Lightweight, free, and minimalist."
+msgstr ""
+"Personalize o cursor do site com imagens PNG (cursor padrão + ao passar o "
+"mouse). Leve, gratuito e minimalista."
+
+#. Default cursor section label
+msgid "Default cursor (PNG) — required"
+msgstr "Cursor padrão (PNG) — obrigatório"
+
+#. Default cursor file missing
+msgid "Default cursor file not found."
+msgstr "Arquivo de cursor padrão não encontrado."
+
+#. Hover cursor label
+msgid "Hover cursor (PNG) — optional"
+msgstr "Cursor secundário (PNG) — opcional"
+
+#. Hover size label
+msgid "Hover size (px):"
+msgstr "Tamanho (px):"
+
+#. Info about hover usage
+msgid "If defined, it will be used when hovering over links and buttons."
+msgstr "Se definido, será usado ao passar o cursor sobre links e botões."
+
+#. Support prompt
+msgid "If this plugin has been helpful, please consider supporting it:"
+msgstr "Se este plugin lhe foi útil, considere apoiá-lo:"
+
+#. Support notice (with link)
+msgid ""
+"If you enjoy Cursor Image Lite and want to support development, please "
+"consider a contribution: %s"
+msgstr ""
+"Se você gosta do Cursor Image Lite e deseja apoiar o desenvolvimento, "
+"considere fazer uma contribuição: %s"
+
+#. Remove button
+msgid "Remove"
+msgstr "Remover"
+
+#. Select image button
+msgid "Select image"
+msgstr "Selecionar imagem"
+
+#. Settings link label
+msgid "Settings"
+msgstr "Configurações"
+
+#. Size label
+msgid "Size (px):"
+msgstr "Tamanho (px):"
+
+#. Default too large
+msgid "The default cursor is too large (max 200KB)."
+msgstr "O cursor padrão é muito grande (máximo de 200 KB)."
+
+#. Default must be PNG
+msgid "The default cursor must be a PNG."
+msgstr "O cursor padrão deve ser um PNG."
+
+#. Hover too large
+msgid "The hover cursor is too large (max 200KB)."
+msgstr "O cursor secundário é muito grande (máximo de 200 KB)."
+
+#. Hover must be PNG
+msgid "The hover cursor must be a PNG."
+msgstr "O cursor secundário deve ser um arquivo PNG."
+
+#. Recommend small files
+msgid "We recommend lightweight images (max 200KB)."
+msgstr "Recomendamos imagens leves (máximo de 200 KB)."
