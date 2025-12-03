@@ -1,6 +1,6 @@
 === Cursor Image Lite ===
 Contributors: dessbesell
-Tags: cursor, image, pointer, customization, ui
+Tags: cursor, custom cursor, pointer, png cursor, customization
 Requires at least: 5.0
 Tested up to: 6.8
 Stable tag: 1.0.1
@@ -9,52 +9,61 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://buymeacoffee.com/fdessbesell
 
-Cursor Image Lite allows you to customize your site cursor using PNG images. Lightweight, simple, and easy to use.
+Easily replace the default mouse cursor with your own custom PNG images. A lightweight and simple custom cursor plugin for WordPress.
 
 == Description ==
 
-Cursor Image Lite is a lightweight plugin that lets you replace the default mouse cursor on your WordPress site with custom PNG images.
+Cursor Image Lite is a lightweight and beginner-friendly plugin that allows you to replace the default mouse cursor on your WordPress site with a custom PNG cursor image. It works with any theme and requires no coding knowledge.
 
-It supports:
-– A primary PNG cursor image
-– A secondary image for hover states (optional)
-– Automatic fallback to the browser cursor if no image is selected
-– Simple and minimal configuration
+This plugin is ideal for websites that want a unique visual experience, such as portfolios, creative blogs, design studios, landing pages, gaming sites, and personal projects.
 
-This plugin is ideal for websites that want a more personalized feeling, such as portfolios, creative projects, games, or custom-themed layouts.
+**You can customize:**
+- A primary PNG cursor image  
+- An optional hover-state PNG image (shown on links, buttons, etc.)  
+- Custom cursor sizes using pixel-based controls for each image 
+
+Cursor Image Lite provides a simple way to personalize the look and feel of your website by using custom mouse pointers.
 
 === Features ===
-– Set your own custom cursor image (PNG)
-– Optional hover-state image
-– Works on all major browsers
-– No coding knowledge required
-– Minimal performance impact
+
+- Set a custom mouse cursor image (PNG)
+- Optional hover-state cursor image
+- Compatible with all major browsers
+- Works with any WordPress theme
+- Lightweight — minimal performance impact
+- No coding required
+- Automatic fallback to the native cursor
+- Clean and simple settings page
 
 == Installation ==
 
-1. Upload the plugin files to `/wp-content/plugins/cursor-image-lite` or install directly through the WordPress Plugins screen.
+1. Upload the plugin files to `/wp-content/plugins/cursor-image-lite` or install directly through the WordPress Plugins page.
 2. Activate the plugin through the “Plugins” menu in WordPress.
-3. Go to **Settings <span aria-hidden="true" class="wp-exclude-emoji">→</span> Cursor Image Lite**.
-4. Upload your PNG images (cursor and optional hover image).
+3. Go to **Settings → Cursor Image Lite**.
+4. Upload your PNG cursor image and optional hover image.
 5. Save your settings.
 6. Your custom cursor will be applied immediately.
 
 == Frequently Asked Questions ==
 
 = What image formats are supported? =
-Only PNG images are supported. Transparent PNGs are recommended.
+The plugin currently supports only PNG images. Transparent PNGs are recommended for best results.
 
 = Does the plugin work on mobile devices? =
-Most mobile browsers do not support custom cursor styles. Mobile fallback will be the default system cursor.
+Most mobile browsers do not display custom cursors. In these cases, the system’s default cursor or touch behavior will be used.
 
 = What happens if I remove all images? =
-The default browser cursor will automatically be used.  
-This issue was corrected in version 1.0.1.
+The browser will automatically revert to the default cursor.  
+This issue was improved in version 1.0.1.
+
+= Does it work with page builders? =
+Yes. The plugin works with all major page builders because it applies cursor styles globally.
 
 == Screenshots ==
 
-1. Settings screen showing cursor upload fields.
-2. Example of custom cursor in action.
+1. Settings screen with upload fields for the primary and hover PNG cursor images.
+2. Settings screen after selecting both cursor images, showing how the custom PNG files appear when configured.
+3. Front-end preview demonstrating the custom cursor in action on a live website.
 
 == Changelog ==
 

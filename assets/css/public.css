@@ -1,4 +1,4 @@
-.cil-cursor {
+.cursimli-cursor {
     position: fixed;
     left: 0;
     top: 0;
@@ -11,4 +11,4 @@
     image-rendering: -webkit-optimize-contrast;
 }
 
-html.cil-enabled, html.cil-enabled * { cursor: none !important; }
+html.cursimli-enabled, html.cursimli-enabled * { cursor: none !important; }

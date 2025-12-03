@@ -2,8 +2,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 add_action('wp_enqueue_scripts', 'cursimli_public_assets', 20);
-add_action('wp_head', 'cursimli_public_inline_css', 30);
-add_action('wp_footer', 'cursimli_public_inline_js', 30);
 
 function cursimli_public_assets(){
     wp_enqueue_style('cursimli_public_css', CURSIMLI_PLUGIN_URL . 'assets/css/public.css', array(), '1.0.1');
@@ -23,19 +21,5 @@ function cursimli_public_assets(){
         'cursor_size' => intval($opts['cursor_size']),
         'hover_size' => intval($opts['hover_size']),
     );
-    wp_localize_script('cursimli_public_js', 'CIL_Settings', $data);
-}
-
-function cursimli_public_inline_css(){
-    ?>
-    <style>
-    @media (pointer: coarse), (hover: none) {
-        .cil-cursor { display: none !important; }
-    }
-    </style>
-    <?php
-}
-
-function cursimli_public_inline_js(){
-    // intentionally empty; main logic in assets/js/public.js
+    wp_localize_script('cursimli_public_js', 'CURSIMLI_Settings', $data);
 }

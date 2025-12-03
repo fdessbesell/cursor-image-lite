@@ -1,17 +1,17 @@
 (function(){
-    if(typeof CIL_Settings === 'undefined') return;
-    var cursorUrl = CIL_Settings.cursor_url || '';
-    var hoverUrl = CIL_Settings.hover_url || '';
-    var cursorSize = CIL_Settings.cursor_size || 48;
-    var hoverSize = CIL_Settings.hover_size || 48;
+    if(typeof CURSIMLI_Settings === 'undefined') return;
+    var cursorUrl = CURSIMLI_Settings.cursor_url || '';
+    var hoverUrl = CURSIMLI_Settings.hover_url || '';
+    var cursorSize = CURSIMLI_Settings.cursor_size || 48;
+    var hoverSize = CURSIMLI_Settings.hover_size || 48;
 
     if (!cursorUrl && !hoverUrl) return;
 
     if (!cursorUrl) return;
 
-    try{ document.documentElement.classList.add('cil-enabled'); }catch(e){}
+    try{ document.documentElement.classList.add('cursimli-enabled'); }catch(e){}
     var img = document.createElement('img');
-    img.className = 'cil-cursor';
+    img.className = 'cursimli-cursor';
     img.src = cursorUrl;
     img.style.width = cursorSize + 'px';
     img.style.height = 'auto';

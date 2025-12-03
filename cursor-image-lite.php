@@ -29,7 +29,7 @@ require_once CURSIMLI_PLUGIN_DIR . 'includes/admin.php';
 require_once CURSIMLI_PLUGIN_DIR . 'includes/public.php';
 
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), function($links){
-    $settings_link = '<a href="options-general.php?page=cil-settings">' . __('Settings', 'cursor-image-lite') . '</a>';
+    $settings_link = '<a href="options-general.php?page=cursimli-settings">' . __('Settings', 'cursor-image-lite') . '</a>';
     array_unshift($links, $settings_link);
     return $links;
 });
@@ -54,7 +54,7 @@ function cursimli_enqueue_cursor_script() {
     if ($need_hide) {
         wp_enqueue_script(
             'cursimli_cursor_hide',
-            CURSIMLI_PLUGIN_URL . 'assets/js/cil-cursor.js',
+            CURSIMLI_PLUGIN_URL . 'assets/js/cursimli-cursor.js',
             array(),
             '1.0.1',
             true

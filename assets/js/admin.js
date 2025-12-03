@@ -17,16 +17,16 @@ jQuery(document).ready(function($){
             frame.open();
         });
     }
-    mediaSelect('#cil_upload_cursor', '#cil_cursor_preview', '#cil_cursor_id');
-    mediaSelect('#cil_upload_hover', '#cil_hover_preview', '#cil_hover_id');
+    mediaSelect('#cursimli_upload_cursor', '#cursimli_cursor_preview', '#cursimli_cursor_id');
+    mediaSelect('#cursimli_upload_hover', '#cursimli_hover_preview', '#cursimli_hover_id');
 
-    $('#cil_remove_cursor').on('click', function(e){ e.preventDefault(); $('#cil_cursor_preview').hide().attr('src',''); $('#cil_cursor_id').val(''); });
-    $('#cil_remove_hover').on('click', function(e){ e.preventDefault(); $('#cil_hover_preview').hide().attr('src',''); $('#cil_hover_id').val(''); });
+    $('#cursimli_remove_cursor').on('click', function(e){ e.preventDefault(); $('#cursimli_cursor_preview').hide().attr('src',''); $('#cursimli_cursor_id').val(''); });
+    $('#cursimli_remove_hover').on('click', function(e){ e.preventDefault(); $('#cursimli_hover_preview').hide().attr('src',''); $('#cursimli_hover_id').val(''); });
 
     $(document).on('click', '.notice.is-dismissible', function(){
         var data = {
             action: 'cursimli_dismiss_support_notice',
-            nonce: (typeof CIL_Admin !== 'undefined' && CIL_Admin.dismiss_nonce) ? CIL_Admin.dismiss_nonce : ''
+            nonce: (typeof CURSIMLI_Admin !== 'undefined' && CURSIMLI_Admin.dismiss_nonce) ? CURSIMLI_Admin.dismiss_nonce : ''
         };
         $.post(ajaxurl, data);
     });
