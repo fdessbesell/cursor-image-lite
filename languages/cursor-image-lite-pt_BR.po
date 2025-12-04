@@ -1,7 +1,7 @@
 # POT file for Cursor Image Lite
 msgid ""
 msgstr ""
-"Project-Id-Version: Cursor Image Lite 1.0.1\n"
+"Project-Id-Version: Cursor Image Lite 1.0.2\n"
 "POT-Creation-Date: 2025-11-25 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Português do Brasil\n"
@@ -20,7 +20,7 @@ msgid "A default cursor is required when a hover cursor is selected."
 msgstr ""
 "É necessário um cursor padrão quando um cursor secundário é selecionado."
 
-#. Plugin name
+#. Cursor Image Lite menu label
 msgid "Cursor Image Lite"
 msgstr "Cursor Image Lite"
 
@@ -39,6 +39,10 @@ msgstr "Cursor padrão (PNG) — obrigatório"
 #. Default cursor file missing
 msgid "Default cursor file not found."
 msgstr "Arquivo de cursor padrão não encontrado."
+
+#. Dismiss support notice permanently
+msgid "Never show again"
+msgstr "Nunca mostrar novamente"
 
 #. Hover cursor label
 msgid "Hover cursor (PNG) — optional"
@@ -63,6 +67,10 @@ msgid ""
 msgstr ""
 "Se você gosta do Cursor Image Lite e deseja apoiar o desenvolvimento, "
 "considere fazer uma contribuição: %s"
+
+#. Defer support notice for 2 days
+msgid "Remind me in 2 days"
+msgstr "Lembrar em 2 dias"
 
 #. Remove button
 msgid "Remove"

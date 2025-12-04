@@ -23,11 +23,54 @@ jQuery(document).ready(function($){
     $('#cursimli_remove_cursor').on('click', function(e){ e.preventDefault(); $('#cursimli_cursor_preview').hide().attr('src',''); $('#cursimli_cursor_id').val(''); });
     $('#cursimli_remove_hover').on('click', function(e){ e.preventDefault(); $('#cursimli_hover_preview').hide().attr('src',''); $('#cursimli_hover_id').val(''); });
 
-    $(document).on('click', '.notice.is-dismissible', function(){
+    function dismissSupportNotice(actionType){
+        var nonce = $('#cursimli-support-notice').find('[data-nonce]').first().data('nonce');
+        
+        if (!nonce) {
+            console.error('Nonce not found');
+            return false;
+        }
+        
         var data = {
             action: 'cursimli_dismiss_support_notice',
-            nonce: (typeof CURSIMLI_Admin !== 'undefined' && CURSIMLI_Admin.dismiss_nonce) ? CURSIMLI_Admin.dismiss_nonce : ''
+            nonce: nonce,
+            action_type: actionType
         };
-        $.post(ajaxurl, data);
+        
+        $.ajax({
+            url: ajaxurl || '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            beforeSend: function(){
+                $('#cursimli-support-notice').css('opacity', '0.5').css('pointer-events', 'none');
+            },
+            success: function(response){
+                if(response.success){
+                    $('#cursimli-support-notice').fadeOut(300, function(){
+                        $(this).remove();
+                    });
+                } else {
+                    console.error('AJAX Error:', response.data);
+                    $('#cursimli-support-notice').css('opacity', '1').css('pointer-events', 'auto');
+                }
+            },
+            error: function(xhr, status, error){
+                console.error('AJAX Error:', error);
+                $('#cursimli-support-notice').css('opacity', '1').css('pointer-events', 'auto');
+            }
+        });
+        
+        return false;
+    }
+    
+    $(document).on('click', '#cursimli-dismiss-permanent', function(e){
+        e.preventDefault();
+        dismissSupportNotice('permanent');
+    });
+    
+    $(document).on('click', '#cursimli-dismiss-remind', function(e){
+        e.preventDefault();
+        dismissSupportNotice('remind_later');
     });
 });

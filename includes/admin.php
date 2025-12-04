@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 add_action('admin_menu', 'cursimli_admin_menu');
 add_action('admin_init', 'cursimli_register_settings');
 add_action('admin_enqueue_scripts', 'cursimli_admin_assets');
+add_action('admin_enqueue_scripts', 'cursimli_enqueue_notice_handler', 5);
 
 function cursimli_admin_menu(){
     add_options_page(
@@ -18,14 +19,14 @@ function cursimli_register_settings(){
     register_setting('cursimli_options_group', 'cursimli_options', 'cursimli_options_validate');
 }
 
+function cursimli_enqueue_notice_handler(){
+    wp_enqueue_script('cursimli_admin_js', CURSIMLI_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.2', true);
+}
+
 function cursimli_admin_assets($hook){
     if ($hook !== 'settings_page_cursimli-settings') return;
-    wp_enqueue_style('cursimli_admin_css', CURSIMLI_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0.1');
+    wp_enqueue_style('cursimli_admin_css', CURSIMLI_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0.2');
     wp_enqueue_media();
-    wp_enqueue_script('cursimli_admin_js', CURSIMLI_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.1', true);
-    wp_localize_script('cursimli_admin_js', 'CURSIMLI_Admin', array(
-        'dismiss_nonce' => wp_create_nonce('cursimli_dismiss_notice'),
-    ));
 }
 
 function cursimli_options_validate($input){
@@ -181,19 +182,48 @@ function cursimli_maybe_show_support_notice(){
     $act = get_option('cursimli_activation_time', 0);
     if(!$act) return;
     $days = (time() - intval($act)) / DAY_IN_SECONDS;
-    if($days >= 7 && !get_option('cursimli_support_notice_dismissed')){
-        /* translators: %s is the URL to buymeacoffee */
-        echo '<div class="notice notice-info is-dismissible"><p>';
-        /* translators: %s contiene um link de apoio */
-    printf( esc_html__( 'If you enjoy Cursor Image Lite and want to support development, please consider a contribution: %s', 'cursor-image-lite' ), '<a href="https://buymeacoffee.com/fdessbesell" target="_blank" rel="noopener noreferrer">buymeacoffee.com/fdessbesell</a>');
-        echo '</p></div>';
+    
+    if(get_option('cursimli_support_notice_dismissed')) return;
+    
+    if($days < 7) return;
+    
+    $dismissed_time = get_option('cursimli_support_notice_dismissed_time', 0);
+    
+    if($dismissed_time > 0){
+        $days_since_dismissed = (time() - intval($dismissed_time)) / DAY_IN_SECONDS;
+        if($days_since_dismissed < 2) return;
     }
-}
+    
+    echo '<div class="notice notice-info" id="cursimli-support-notice">';
+    echo '<p>';
+    /* translators: %s contains a support link */
+    printf( esc_html__( 'If you enjoy Cursor Image Lite and want to support development, please consider a contribution: %s', 'cursor-image-lite' ), '<a href="https://buymeacoffee.com/fdessbesell" target="_blank" rel="noopener noreferrer">buymeacoffee.com/fdessbesell</a>');
+        echo '</p>';
+        echo '<p style="margin: 8px 0 0 0;">';
+        echo '<button type="button" class="button button-primary" id="cursimli-dismiss-permanent" data-nonce="' . esc_attr(wp_create_nonce('cursimli_dismiss_notice')) . '" style="margin-right: 8px;">' . esc_html__('Never show again', 'cursor-image-lite') . '</button>';
+        echo '<button type="button" class="button" id="cursimli-dismiss-remind" data-nonce="' . esc_attr(wp_create_nonce('cursimli_dismiss_notice')) . '">' . esc_html__('Remind me in 2 days', 'cursor-image-lite') . '</button>';
+        echo '</p>';
+        echo '</div>';
+    }
 add_action('wp_ajax_cursimli_dismiss_support_notice', function(){
     if (! current_user_can('manage_options')) {
-        wp_send_json_error('forbidden', 403);
+        wp_send_json_error(array('message' => 'Unauthorized'), 403);
     }
-    check_ajax_referer('cursimli_dismiss_notice', 'nonce');
-    update_option('cursimli_support_notice_dismissed', 1);
-    wp_send_json_success();
+    
+    $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
+    if (! $nonce || ! wp_verify_nonce($nonce, 'cursimli_dismiss_notice')) {
+        wp_send_json_error(array('message' => 'Nonce verification failed'), 403);
+    }
+    
+    $action = isset($_POST['action_type']) ? sanitize_text_field(wp_unslash($_POST['action_type'])) : '';
+    
+    if ($action === 'permanent') {
+        update_option('cursimli_support_notice_dismissed', 1);
+        wp_send_json_success(array('message' => 'Notice dismissed permanently'));
+    } elseif ($action === 'remind_later') {
+        update_option('cursimli_support_notice_dismissed_time', time());
+        wp_send_json_success(array('message' => 'Notice reminder set for 2 days'));
+    } else {
+        wp_send_json_error(array('message' => 'Invalid action type'), 400);
+    }
 });

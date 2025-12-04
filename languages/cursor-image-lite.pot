@@ -1,8 +1,8 @@
 # POT file for Cursor Image Lite
 msgid ""
 msgstr ""
-"Project-Id-Version: Cursor Image Lite 1.0.1\n"
-"POT-Creation-Date: 2025-11-25 00:00+0000\n"
+"Project-Id-Version: Cursor Image Lite 1.0.2\n"
+"POT-Creation-Date: 2025-12-04 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: \n"
@@ -10,52 +10,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Default cursor file missing
-msgid "Default cursor file not found."
+#. Validation: default required when hover selected
+msgid "A default cursor is required when a hover cursor is selected."
 msgstr ""
 
-#. Settings link label
-msgid "Settings"
-msgstr ""
-
-#. Hover cursor label
-msgid "Hover cursor (PNG) — optional"
-msgstr ""
-
-#. Plugin name
+#. Cursor Image Lite menu label
 msgid "Cursor Image Lite"
-msgstr ""
-
-#. Default cursor section label
-msgid "Default cursor (PNG) — required"
 msgstr ""
 
 #. Plugin description
 msgid "Customize the website cursor with PNG images (default cursor + hover). Lightweight, free, and minimalist."
 msgstr ""
 
-#. Hover must be PNG
-msgid "The hover cursor must be a PNG."
+#. Default cursor section label
+msgid "Default cursor (PNG) — required"
 msgstr ""
 
-#. Hover too large
-msgid "The hover cursor is too large (max 200KB)."
+#. Default cursor file missing
+msgid "Default cursor file not found."
 msgstr ""
 
-#. Default must be PNG
-msgid "The default cursor must be a PNG."
+#. Dismiss support notice permanently
+msgid "Never show again"
 msgstr ""
 
-#. Default too large
-msgid "The default cursor is too large (max 200KB)."
+#. Hover cursor label
+msgid "Hover cursor (PNG) — optional"
 msgstr ""
 
-#. Recommend small files
-msgid "We recommend lightweight images (max 200KB)."
-msgstr ""
-
-#. Remove button
-msgid "Remove"
+#. Hover size label
+msgid "Hover size (px):"
 msgstr ""
 
 #. Info about hover usage
@@ -70,20 +54,44 @@ msgstr ""
 msgid "If you enjoy Cursor Image Lite and want to support development, please consider a contribution: %s"
 msgstr ""
 
+#. Defer support notice for 2 days
+msgid "Remind me in 2 days"
+msgstr ""
+
+#. Remove button
+msgid "Remove"
+msgstr ""
+
 #. Select image button
 msgid "Select image"
+msgstr ""
+
+#. Settings link label
+msgid "Settings"
 msgstr ""
 
 #. Size label
 msgid "Size (px):"
 msgstr ""
 
-#. Hover size label
-msgid "Hover size (px):"
+#. Default too large
+msgid "The default cursor is too large (max 200KB)."
 msgstr ""
 
-#. Validation: default required when hover selected
-msgid "A default cursor is required when a hover cursor is selected."
+#. Default must be PNG
+msgid "The default cursor must be a PNG."
+msgstr ""
+
+#. Hover too large
+msgid "The hover cursor is too large (max 200KB)."
+msgstr ""
+
+#. Hover must be PNG
+msgid "The hover cursor must be a PNG."
+msgstr ""
+
+#. Recommend small files
+msgid "We recommend lightweight images (max 200KB)."
 msgstr ""
 
 \

@@ -2,8 +2,8 @@
 Contributors: dessbesell
 Tags: cursor, custom cursor, pointer, png cursor, customization
 Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 1.0.1
+Tested up to: 6.9
+Stable tag: 1.0.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,6 +67,10 @@ Yes. The plugin works with all major page builders because it applies cursor sty
 
 == Changelog ==
 
+= 1.0.2 =
+* Improved: Support notice now has two action buttons - "Never show again" (dismisses permanently) and "Remind me in 2 days" (defer reminder).
+* Fixed: Support notice now respects the defer option and reappears correctly after 2 days instead of persisting indefinitely.
+
 = 1.0.1 =
 * Fixed: native cursor not appearing when no images were selected.
 
@@ -74,6 +78,9 @@ Yes. The plugin works with all major page builders because it applies cursor sty
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+This update improves the support notice functionality, allowing users to dismiss it permanently or defer for 2 days.
 
 = 1.0.1 =
 This update fixes a fallback cursor issue. It is recommended for all users.
