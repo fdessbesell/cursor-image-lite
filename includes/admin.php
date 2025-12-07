@@ -20,12 +20,12 @@ function cursimli_register_settings(){
 }
 
 function cursimli_enqueue_notice_handler(){
-    wp_enqueue_script('cursimli_admin_js', CURSIMLI_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.2', true);
+    wp_enqueue_script('cursimli_admin_js', CURSIMLI_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.3', true);
 }
 
 function cursimli_admin_assets($hook){
     if ($hook !== 'settings_page_cursimli-settings') return;
-    wp_enqueue_style('cursimli_admin_css', CURSIMLI_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0.2');
+    wp_enqueue_style('cursimli_admin_css', CURSIMLI_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0.3');
     wp_enqueue_media();
 }
 
@@ -165,6 +165,9 @@ function cursimli_settings_page(){
                     </td>
                 </tr>
             </table>
+            <div class="cursimli-notice notice notice-info" style="margin-bottom: 20px;">
+                <p><?php esc_html_e('Important: Custom cursors are only applied to the frontend of your website. They will not appear in the WordPress admin panel. To see the changes, visit your website frontend after saving.', 'cursor-image-lite'); ?></p>
+            </div>
             <?php submit_button(); ?>
         </form>
 

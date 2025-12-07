@@ -1,5 +1,8 @@
 (function(){
     if(typeof CURSIMLI_Settings === 'undefined') return;
+    
+    if(window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches) return;
+    
     var cursorUrl = CURSIMLI_Settings.cursor_url || '';
     var hoverUrl = CURSIMLI_Settings.hover_url || '';
     var cursorSize = CURSIMLI_Settings.cursor_size || 48;

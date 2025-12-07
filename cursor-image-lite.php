@@ -3,7 +3,7 @@
 Plugin Name: Cursor Image Lite
 Plugin URI: https://wp.harukicore.com/cursor-image-lite
 Description: A lightweight plugin that allows you to replace the default mouse cursor with a custom image across your website.
-Version: 1.0.2
+Version: 1.0.3
 Author: Felipe Dessbesell
 Author URI: https://wp.harukicore.com/
 Contributors: dessbesell
@@ -56,7 +56,7 @@ function cursimli_enqueue_cursor_script() {
             'cursimli_cursor_hide',
             CURSIMLI_PLUGIN_URL . 'assets/js/cursimli-cursor.js',
             array(),
-            '1.0.2',
+            '1.0.3',
             true
         );
     }

@@ -1,8 +1,8 @@
 # POT file for Cursor Image Lite
 msgid ""
 msgstr ""
-"Project-Id-Version: Cursor Image Lite 1.0.2\n"
-"POT-Creation-Date: 2025-12-04 00:00+0000\n"
+"Project-Id-Version: Cursor Image Lite 1.0.3\n"
+"POT-Creation-Date: 2025-12-07 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: \n"
@@ -92,6 +92,10 @@ msgstr ""
 
 #. Recommend small files
 msgid "We recommend lightweight images (max 200KB)."
+msgstr ""
+
+#. Important notice about frontend-only application
+msgid "Important: Custom cursors are only applied to the frontend of your website. They will not appear in the WordPress admin panel. To see the changes, visit your website frontend after saving."
 msgstr ""
 
 \

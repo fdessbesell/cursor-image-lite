@@ -1,8 +1,8 @@
 # POT file for Cursor Image Lite
 msgid ""
 msgstr ""
-"Project-Id-Version: Cursor Image Lite 1.0.2\n"
-"POT-Creation-Date: 2025-11-25 00:00+0000\n"
+"Project-Id-Version: Cursor Image Lite 1.0.3\n"
+"POT-Creation-Date: 2025-12-07 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Português do Brasil\n"
 "Language: pt-BR\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-11-25 15:11+0000\n"
+"PO-Revision-Date: 2025-12-07 15:11+0000\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.8.0; wp-6.8.3; php-8.2.29"
@@ -107,3 +107,7 @@ msgstr "O cursor secundário deve ser um arquivo PNG."
 #. Recommend small files
 msgid "We recommend lightweight images (max 200KB)."
 msgstr "Recomendamos imagens leves (máximo de 200 KB)."
+
+#. Important notice about frontend-only application
+msgid "Important: Custom cursors are only applied to the frontend of your website. They will not appear in the WordPress admin panel. To see the changes, visit your website frontend after saving."
+msgstr "Importante: Os cursores personalizados são aplicados apenas no frontend do seu site. Eles não aparecerão no painel administrativo do WordPress. Para ver as alterações, visite o frontend do seu site após salvar."

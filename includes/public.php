@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 add_action('wp_enqueue_scripts', 'cursimli_public_assets', 20);
 
 function cursimli_public_assets(){
-    wp_enqueue_style('cursimli_public_css', CURSIMLI_PLUGIN_URL . 'assets/css/public.css', array(), '1.0.2');
-    wp_enqueue_script('cursimli_public_js', CURSIMLI_PLUGIN_URL . 'assets/js/public.js', array('jquery'), '1.0.2', true);
+    wp_enqueue_style('cursimli_public_css', CURSIMLI_PLUGIN_URL . 'assets/css/public.css', array(), '1.0.3');
+    wp_enqueue_script('cursimli_public_js', CURSIMLI_PLUGIN_URL . 'assets/js/public.js', array('jquery'), '1.0.3', true);
 
     $opts = get_option('cursimli_options', array(
         'cursor_id'=>0,
